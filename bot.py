@@ -157,4 +157,15 @@ app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 
 print("🔥 PRO MASTER BOT ÇALIŞIYOR...")
+
 app.run_polling()
+if __name__ == "__main__":
+    import os
+    if os.environ.get("RENDER"):
+        application.run_webhook(
+            listen="0.0.0.0",
+            port=int(os.environ.get("PORT", 10000)),
+            webhook_url="https://SENIN-RENDER-URL.onrender.com"
+        )
+    else:
+        application.run_polling()
