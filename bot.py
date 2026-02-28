@@ -161,12 +161,18 @@ print("🔥 PRO MASTER BOT ÇALIŞIYOR...")
 app.run_polling()
 if __name__ == "__main__":
     import os
-    if os.environ.get("RENDER"):
+
+    PORT = int(os.environ.get("PORT", 10000))
+
+    # Render ortamında çalışıyorsa webhook kullan
+    if "RENDER_EXTERNAL_URL" in os.environ:
         application.run_webhook(
             listen="0.0.0.0",
-            port=int(os.environ.get("PORT", 10000)),
-            webhook_url="https://https://bot-server-aoha.onrender.com"
+            port=PORT,
+            webhook_url=os.environ["RENDER_EXTERNAL_URL"]
         )
     else:
+        # Bilgisayarda çalışıyorsa polling kullan
         application.run_polling()
+
 
