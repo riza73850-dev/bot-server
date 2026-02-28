@@ -165,7 +165,8 @@ if __name__ == "__main__":
         application.run_webhook(
             listen="0.0.0.0",
             port=int(os.environ.get("PORT", 10000)),
-            webhook_url="https://SENIN-RENDER-URL.onrender.com"
+            webhook_url="https://https://bot-server-aoha.onrender.com"
         )
     else:
         application.run_polling()
+
